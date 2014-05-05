@@ -5,7 +5,7 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{495978ea-1625-4c3c-87fa-9dbf83565626}</ProjectGuid>
+    <ProjectGuid>{495978EA-1625-4C3C-87FA-9DBF83565626}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WaffleTest</RootNamespace>
@@ -36,8 +36,12 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Assertion.cs" />
+    <Compile Include="BehaviorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultContext.cs" />
+    <Compile Include="StandardAssertions.cs" />
+    <Compile Include="WhenContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -47,5 +51,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
 </Project>

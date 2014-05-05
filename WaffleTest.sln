@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaffleTest", "WaffleTest\WaffleTest.csproj", "{495978EA-1625-4C3C-87FA-9DBF83565626}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaffleTestTest", "WaffleTestTest\WaffleTestTest.csproj", "{927163F7-D2B9-420A-9703-96BF3942C461}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{495978EA-1625-4C3C-87FA-9DBF83565626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{495978EA-1625-4C3C-87FA-9DBF83565626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{495978EA-1625-4C3C-87FA-9DBF83565626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{927163F7-D2B9-420A-9703-96BF3942C461}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{927163F7-D2B9-420A-9703-96BF3942C461}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{927163F7-D2B9-420A-9703-96BF3942C461}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{927163F7-D2B9-420A-9703-96BF3942C461}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
