@@ -10,5 +10,15 @@ namespace WaffleTestTest
                 It("should equal 4", result.ShouldEqual(4));
             });
         }
+
+        public void DivisionTests()
+        {
+            Subject<float> infinity = Subject.FromFactory(() => float.PositiveInfinity);
+
+            Given(infinity).When("dividing it by 1", inf => inf / 1).Then(result =>
+            {
+                It("should still be infinite", result.ShouldBeInfinite());
+            });
+        }
     }
 }

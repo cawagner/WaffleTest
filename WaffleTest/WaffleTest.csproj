@@ -38,9 +38,11 @@
   <ItemGroup>
     <Compile Include="Assertion.cs" />
     <Compile Include="BehaviorTests.cs" />
+    <Compile Include="GivenContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultContext.cs" />
     <Compile Include="StandardAssertions.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="WhenContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

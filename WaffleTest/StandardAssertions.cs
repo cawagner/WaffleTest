@@ -7,4 +7,12 @@
             return new Assertion();
         }
     }
+
+    public static class FloatAssertions
+    {
+        public static Assertion ShouldBeInfinite(this ResultContext<float> result)
+        {
+            return new Assertion();
+        }
+    }
 }

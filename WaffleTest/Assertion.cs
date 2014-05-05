@@ -1,6 +1,6 @@
 ﻿namespace WaffleTest
 {
-    public class Assertion
+    public sealed class Assertion
     {
         
     }

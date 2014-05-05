@@ -1,0 +1,19 @@
+﻿using System;
+
+namespace WaffleTest
+{
+    public sealed class GivenContext<T>
+    {
+        private readonly Subject<T> _given;
+
+        internal GivenContext(Subject<T> given)
+        {
+            _given = given;
+        }
+
+        public WhenContext<U> When<U>(string description, Func<T, U> getTopic)
+        {
+            return new WhenContext<U>(description, () => getTopic(_given.Get()));
+        }
+    }
+}
