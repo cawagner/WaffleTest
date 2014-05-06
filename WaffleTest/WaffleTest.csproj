@@ -37,13 +37,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assertion.cs" />
+    <Compile Include="AssertionExtensions\FloatAssertions.cs" />
     <Compile Include="BehaviorTests.cs" />
     <Compile Include="GivenContext.cs" />
     <Compile Include="ITestExecutor.cs" />
     <Compile Include="NoopTestExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultContext.cs" />
-    <Compile Include="StandardAssertions.cs" />
+    <Compile Include="AssertionExtensions\StandardAssertions.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="VoidType.cs" />
     <Compile Include="WhenContext.cs" />

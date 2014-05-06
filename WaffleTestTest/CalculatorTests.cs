@@ -1,4 +1,5 @@
 ﻿using WaffleTest;
+using WaffleTest.AssertionExtensions;
 
 namespace WaffleTestTest
 {

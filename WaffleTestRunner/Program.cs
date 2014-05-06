@@ -18,7 +18,6 @@ namespace WaffleTestRunner
 
                 foreach (var testType in testTypes)
                 {
-
                     Console.WriteLine("tests in " + testType.FullName);
                     var testMethods = testType.GetMethods(BindingFlags.Instance | BindingFlags.Public);
                     foreach (var testMethod in testMethods)
