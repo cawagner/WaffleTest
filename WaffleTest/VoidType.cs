@@ -7,5 +7,10 @@
         private VoidType()
         {
         }
+
+        public override string ToString()
+        {
+            return "Void";
+        }
     }
 }
