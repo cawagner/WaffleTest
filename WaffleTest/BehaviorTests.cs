@@ -4,7 +4,12 @@ namespace WaffleTest
 {
     public abstract class BehaviorTests
     {
-        internal ITestExecutor TestExecutor { get; set; }
+        private ITestExecutor _testExecutor = new NoopTestExecutor();
+        internal ITestExecutor TestExecutor
+        {
+            get { return _testExecutor; }
+            set { _testExecutor = value; }
+        }
 
         protected WhenContext<T> When<T>(string description, Func<T> getTopic)
         {
