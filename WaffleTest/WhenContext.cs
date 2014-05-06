@@ -15,7 +15,6 @@ namespace WaffleTest
 
         public void Then(Action<ResultContext<T>> assertions)
         {
-
         }
     }
 }

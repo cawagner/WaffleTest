@@ -1,6 +1,6 @@
 ﻿namespace WaffleTest
 {
-    public class ResultContext<T>
+    internal interface ITestExecutor
     {
     }
 }

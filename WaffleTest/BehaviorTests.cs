@@ -11,6 +11,15 @@ namespace WaffleTest
             return new WhenContext<T>(description, getTopic);
         }
 
+        protected WhenContext<VoidType> When(string description, Action performActions)
+        {
+            return When(description, () =>
+            {
+                performActions();
+                return VoidType.Value;
+            });
+        }
+
         protected GivenContext<T> Given<T>(Subject<T> subject)
         {
             return new GivenContext<T>(subject);
@@ -20,9 +29,5 @@ namespace WaffleTest
         {
             
         }
-    }
-
-    internal interface ITestExecutor
-    {
     }
 }
