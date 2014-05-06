@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WaffleTest
+namespace WaffleTest.Structure
 {
     public sealed class GivenContext<T>
     {

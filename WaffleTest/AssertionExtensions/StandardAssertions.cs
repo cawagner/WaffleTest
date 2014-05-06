@@ -1,4 +1,6 @@
-﻿namespace WaffleTest.AssertionExtensions
+﻿using WaffleTest.Structure;
+
+namespace WaffleTest.AssertionExtensions
 {
     public static class StandardAssertions
     {
