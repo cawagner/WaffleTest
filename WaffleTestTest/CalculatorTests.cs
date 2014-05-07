@@ -19,7 +19,7 @@ namespace WaffleTestTest
             var anEmptyList = Subject.FromFactory(() => new[] { 0 });
 
             Given("an empty list", anEmptyList, list => {
-                When("the list items are summed", list().Sum, result =>
+                When("the list items are summed", () => list().Sum(), result =>
                 {
                     Then("the total should equal 0", result.MustEqual(0));
                 });

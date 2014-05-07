@@ -12,17 +12,7 @@ namespace WaffleTestRunner
 
         public void When<T>(string description, Func<T> getTopic, Action<ResultContext<T>> assert)
         {
-            foreach (var given in _givens)
-            {
-                try
-                {
-                    given.Refresh();
-                }
-                catch (Exception ex)
-                { 
-                    Console.WriteLine("Error satisfying given '{0}': {1}", given.Description, ex);
-                }
-            }
+            RefreshAllGivens<T>();
             Console.WriteLine(new string(' ', _indent) + "When " + description + "...");
 
             _indent++;
@@ -37,19 +27,28 @@ namespace WaffleTestRunner
             --_indent;
         }
 
+        private void RefreshAllGivens<T>()
+        {
+            foreach (var given in _givens)
+            {
+                try
+                {
+                    given.Refresh();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error satisfying given '{0}': {1}", given.Description, ex);
+                }
+            }
+        }
+
         public void Given<T>(string description, Subject<T> subject, Action<Func<T>> withSubject)
         {
             Console.WriteLine(new string(' ', _indent) + "Given " + description + "...");
 
             T givenValue = default(T);
-            var given = new GivenContext(description, () =>
-            {
-                givenValue = subject.Get();
-            });
-            Func<T> getGiven = () =>
-            {
-                return givenValue;
-            };
+            var given = new GivenContext(description, () => givenValue = subject.Get());
+            Func<T> getGiven = () => givenValue;
 
             _givens.Push(given);
             ++_indent;
