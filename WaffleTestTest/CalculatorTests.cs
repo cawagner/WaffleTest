@@ -1,4 +1,5 @@
-﻿using WaffleTest;
+﻿using System.Linq;
+using WaffleTest;
 using WaffleTest.AssertionExtensions;
 using WaffleTest.Structure;
 
@@ -8,18 +9,20 @@ namespace WaffleTestTest
     {
         public void AdditionTests()
         {
-            When("the user adds 2 + 2", () => 2 + 2).Then(result => {
-                It("should equal 4", result.ShouldEqual(4));
+            When("2 + 2 are added", () => 2 + 2, result => {
+                Then("the result should equal 4", result.MustEqual(4));
             });
         }
 
-        public void DivisionTests()
+        public void SummationTests()
         {
-            Subject<float> infinity = Subject.FromFactory(() => float.PositiveInfinity);
+            var anEmptyList = Subject.FromFactory(() => new int[] {});
 
-            Given(infinity).When("dividing it by 1", inf => inf / 1).Then(result =>
-            {
-                It("should still be infinite", result.ShouldBeInfinite());
+            Given("an empty list", anEmptyList, list => {
+                When("the list items are summed", list().Sum, result =>
+                {
+                    Then("the total should equal 0", result.MustEqual(0));
+                });
             });
         }
     }

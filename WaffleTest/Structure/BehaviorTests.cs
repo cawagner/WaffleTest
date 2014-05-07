@@ -11,28 +11,28 @@ namespace WaffleTest.Structure
             set { _testExecutor = value; }
         }
 
-        protected WhenContext<T> When<T>(string description, Func<T> getTopic)
+        protected void When<T>(string description, Func<T> getTopic, Action<ResultContext<T>> assert)
         {
-            return new WhenContext<T>(description, getTopic);
+            TestExecutor.When(description, getTopic, assert);
         }
 
-        protected WhenContext<VoidType> When(string description, Action performActions)
+        protected void When(string description, Action performActions, Action<ResultContext<VoidType>> assert)
         {
-            return When(description, () =>
+            When(description, () =>
             {
                 performActions();
                 return VoidType.Value;
-            });
+            }, assert);
         }
 
-        protected GivenContext<T> Given<T>(Subject<T> subject)
+        protected void Given<T>(string description, Subject<T> subject, Action<Func<T>> withSubject)
         {
-            return new GivenContext<T>(subject);
+            TestExecutor.Given(description, subject, withSubject);
         }
 
-        protected void It(string description, Assertion assertion)
+        protected void Then(string description, Assertion assertion)
         {
-            
+            TestExecutor.Then(description, assertion);
         }
     }
 }

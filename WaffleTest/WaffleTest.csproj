@@ -39,7 +39,6 @@
     <Compile Include="Assertion.cs" />
     <Compile Include="AssertionExtensions\FloatAssertions.cs" />
     <Compile Include="Structure\BehaviorTests.cs" />
-    <Compile Include="Structure\GivenContext.cs" />
     <Compile Include="ITestExecutor.cs" />
     <Compile Include="NoopTestExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -47,7 +46,6 @@
     <Compile Include="AssertionExtensions\StandardAssertions.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="VoidType.cs" />
-    <Compile Include="Structure\WhenContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
