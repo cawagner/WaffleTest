@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using WaffleTest.Structure;
@@ -19,7 +20,7 @@ namespace WaffleTestRunner
 
                 foreach (var testType in testTypes)
                 {
-                    Console.WriteLine("** tests in " + testType.FullName);
+                    Console.WriteLine("[[" + testType.FullName + "]]");
                     Console.WriteLine();
 
                     var testMethods = testType.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly);
@@ -29,8 +30,12 @@ namespace WaffleTestRunner
                         dynamic testInstance = Activator.CreateInstance(testType);
                         testInstance.TestExecutor = testExecutor;
 
-                        Console.WriteLine("* batch " + testMethod.Name);
+                        Console.WriteLine("[" + testMethod.Name + "]");
+                        var sw = Stopwatch.StartNew();
                         testMethod.Invoke(testInstance, null);
+
+                        Console.WriteLine("{0}/{1} assertions passed in {2}ms", testExecutor.TestsPassed, testExecutor.TestsRun, sw.ElapsedMilliseconds);
+
                         Console.WriteLine();
                     }
                 }

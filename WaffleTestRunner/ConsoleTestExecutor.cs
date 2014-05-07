@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using WaffleTest;
 using WaffleTest.Structure;
 
@@ -7,6 +8,9 @@ namespace WaffleTestRunner
 {
     internal class ConsoleTestExecutor : ITestExecutor
     {
+        public int TestsRun { get; private set; }
+        public int TestsPassed { get; private set; }
+
         private int _indent = 0;
         private readonly Stack<GivenContext> _givens = new Stack<GivenContext>();
 
@@ -44,7 +48,7 @@ namespace WaffleTestRunner
 
         public void Given<T>(string description, Subject<T> subject, Action<Func<T>> withSubject)
         {
-            Console.WriteLine(new string(' ', _indent) + "Given " + description + "...");
+            Console.Write(new string(' ', _indent) + "Given " + description + "... ");
 
             T givenValue = default(T);
             var given = new GivenContext(description, () => givenValue = subject.Get());
@@ -68,6 +72,7 @@ namespace WaffleTestRunner
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(" PASS");
+                ++TestsPassed;
             }
             else
             {
@@ -77,6 +82,7 @@ namespace WaffleTestRunner
                 Console.WriteLine(new string(' ', _indent + 1) + assertion.Message);
             }
             Console.ForegroundColor = oldColor;
+            ++TestsRun;
         }
     }
 }
