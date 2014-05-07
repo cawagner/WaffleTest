@@ -17,6 +17,14 @@ namespace WaffleTest.AssertionExtensions
                 : new Assertion(false, "An exception was thrown: " + exception);
         }
 
+        public static Assertion MustHaveThrown<T>(this ResultContext<T> result, Type exceptionType)
+        {
+            Exception exception;
+            return result.TryGetException(out exception)
+                ? new Assertion(exception.GetType() == exceptionType, string.Format("Expected exception of type '{0}' but got the following: '{1}'", exceptionType.FullName, exception))
+                : new Assertion(false, "No exception was thrown in code that should have thrown");
+        }
+
         public static Assertion MustEqual<T>(this ResultContext<T> result, T expectedValue)
         {
             return result.Must(actualValue =>

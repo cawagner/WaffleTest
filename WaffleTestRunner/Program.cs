@@ -11,13 +11,8 @@ namespace WaffleTestRunner
         static void Main(string[] args)
         {
             var testBase = typeof (BehaviorTests);
-            
-            var fakeArgs = new[]
-            {
-                @"C:\Users\Chris\Documents\Visual Studio 2012\Projects\WaffleTest\WaffleTestTest\bin\Debug\WaffleTestTest.dll"
-            };
 
-            foreach (string dll in fakeArgs)
+            foreach (string dll in args)
             {
                 Assembly testAssembly = Assembly.LoadFrom(dll);
                 IEnumerable<Type> testTypes = testAssembly.GetTypes().Where(t => !t.IsAbstract && testBase.IsAssignableFrom(t));

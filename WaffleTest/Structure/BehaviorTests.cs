@@ -25,6 +25,11 @@ namespace WaffleTest.Structure
             }, assert);
         }
 
+        protected void When(string description, Action more)
+        {
+            When(description, () => VoidType.Value, r => more());
+        }
+
         protected void Given<T>(string description, Subject<T> subject, Action<Func<T>> withSubject)
         {
             TestExecutor.Given(description, subject, withSubject);

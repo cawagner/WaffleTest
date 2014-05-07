@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Threading;
 using WaffleTest;
 using WaffleTest.AssertionExtensions;
 using WaffleTest.Structure;
@@ -14,9 +16,28 @@ namespace WaffleTestTest
             });
         }
 
+        public void DivisionTests()
+        {
+            When("dividing numbers by 0", () =>
+            {
+                When("working with ints", () => 1 / int.Parse("0"), result =>
+                {
+                    Then("the operation should throw a DivideByZero", result.MustHaveThrown(typeof(DivideByZeroException)));
+
+                    // this shouldn't actually pass
+                    Then("the operation should throw a stupid exception", result.MustHaveThrown(typeof(AbandonedMutexException)));
+                });
+
+                When("when working with doubles", () => 1.0 / 0.0, result =>
+                {
+                    Then("the result should be infinite", result.MustBeInfinite());
+                });
+            });
+        }
+
         public void SummationTests()
         {
-            var anEmptyList = Subject.FromFactory(() => new[] { 0 });
+            var anEmptyList = Subject.FromFactory(() => new int[] { });
 
             Given("an empty list", anEmptyList, list => {
                 When("the list items are summed", () => list().Sum(), result =>
