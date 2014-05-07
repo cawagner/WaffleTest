@@ -2,7 +2,7 @@
 
 namespace WaffleTest.Structure
 {
-    public class ResultContext<T>
+    public sealed class ResultContext<T>
     {
         private readonly Exception _exception;
         private readonly bool _hasValue;

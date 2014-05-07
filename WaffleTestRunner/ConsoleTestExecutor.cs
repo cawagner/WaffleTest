@@ -42,8 +42,14 @@ namespace WaffleTestRunner
             Console.WriteLine(new string(' ', _indent) + "Given " + description + "...");
 
             T givenValue = default(T);
-            var given = new GivenContext(description, () => givenValue = subject.Get());
-            Func<T> getGiven = () => givenValue;
+            var given = new GivenContext(description, () =>
+            {
+                givenValue = subject.Get();
+            });
+            Func<T> getGiven = () =>
+            {
+                return givenValue;
+            };
 
             _givens.Push(given);
             ++_indent;
@@ -56,7 +62,22 @@ namespace WaffleTestRunner
 
         public void Then(string description, Assertion assertion)
         {
-            Console.WriteLine(new string(' ', _indent) + "Then " + description + "...");
+            Console.Write(new string(' ', _indent) + "Then " + description + "...");
+            
+            var oldColor = Console.ForegroundColor;
+            if (assertion.Passed)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(" PASS");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(" FAIL");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine(new string(' ', _indent + 1) + assertion.Message);
+            }
+            Console.ForegroundColor = oldColor;
         }
     }
 }

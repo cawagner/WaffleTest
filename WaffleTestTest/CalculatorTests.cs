@@ -16,7 +16,7 @@ namespace WaffleTestTest
 
         public void SummationTests()
         {
-            var anEmptyList = Subject.FromFactory(() => new int[] {});
+            var anEmptyList = Subject.FromFactory(() => new[] { 0 });
 
             Given("an empty list", anEmptyList, list => {
                 When("the list items are summed", list().Sum, result =>

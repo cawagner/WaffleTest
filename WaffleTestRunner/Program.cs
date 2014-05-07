@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using WaffleTest;
 using WaffleTest.Structure;
 
 namespace WaffleTestRunner
@@ -12,7 +11,13 @@ namespace WaffleTestRunner
         static void Main(string[] args)
         {
             var testBase = typeof (BehaviorTests);
-            foreach (string dll in args)
+            
+            var fakeArgs = new[]
+            {
+                @"C:\Users\Chris\Documents\Visual Studio 2012\Projects\WaffleTest\WaffleTestTest\bin\Debug\WaffleTestTest.dll"
+            };
+
+            foreach (string dll in fakeArgs)
             {
                 Assembly testAssembly = Assembly.LoadFrom(dll);
                 IEnumerable<Type> testTypes = testAssembly.GetTypes().Where(t => !t.IsAbstract && testBase.IsAssignableFrom(t));
